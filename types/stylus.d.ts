@@ -1,6 +1,6 @@
 declare module 'stylus'
 {
-	interface RendererOptions
+	export interface RendererOptions
 	{
 		globals: object;
 		functions: object;
@@ -9,13 +9,28 @@ declare module 'stylus'
 		paths: string[];
 		filename: string;
 		Evaluator: object;
+		[key: string]: any;
 	}
 	
-	type RenderCallback = ( error: Error | null, css: string ) => string | undefined;
+	export type RenderCallback = ( error: Error | null, css: string ) => string | undefined;
 	
 	export function render(
 		str: string,
 		options?: Partial<RendererOptions>,
 		callback?: RenderCallback
 	): string;
+	
+	export interface ResolverOptions
+	{
+		/**
+		 * Additional resolution path(s)
+		 */
+		paths: string[];
+		/**
+		 * Don’t check file existence
+		 */
+		nocheck: boolean;
+	}
+	
+	export function resolver( options?: Partial<ResolverOptions> ): Function;
 }

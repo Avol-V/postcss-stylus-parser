@@ -3,21 +3,38 @@ import parse from 'postcss/lib/parse';
 import stylus from 'stylus';
 
 /**
- * Parse Stylus file
+ * Returns Stylus parse function
  * 
- * @param contents Stylus file contents
- * @param options PostCSS process options
+ * @param options Stylus render options
  */
-function parseStylus( contents?: string, options?: ProcessOptions ): Root
+const getParser = ( options: Partial<stylus.RendererOptions> = {} ) =>
 {
-	const css = stylus.render(
-		contents || '',
-		options && {
-			filename: options.from,
-		},
-	);
+	/**
+	 * Parse Stylus file
+	 * 
+	 * @param contents Stylus file contents
+	 * @param processOptions PostCSS process options
+	 */
+	const parseStylus = (
+		contents?: string,
+		processOptions?: ProcessOptions,
+	): Root =>
+	{
+		const css = stylus.render(
+			contents || '',
+			{
+				...options,
+				filename: processOptions && processOptions.from,
+			},
+		);
+		
+		return parse( css, processOptions );
+	};
 	
-	return parse( css, options );
-}
+	return parseStylus;
+};
 
-export default parseStylus;
+export {
+	getParser as default,
+	getParser,
+};

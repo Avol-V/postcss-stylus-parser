@@ -33,7 +33,7 @@ postcss( plugins )
 		stylusContent,
 		{
 			from: 'test.styl',
-			parser: stylusParser,
+			parser: stylusParser(),
 		}
 	)
 	.then(
@@ -45,6 +45,32 @@ postcss( plugins )
 			  color: #f00;
 			}
 			*/
+		}
+	);
+```
+
+With Stylus options:
+
+```js
+postcss( plugins )
+	.process(
+		stylusContent,
+		{
+			from: 'test.styl',
+			parser: stylusParser(
+				{
+					'resolve url': true,
+					'functions': {
+						url: stylus.resolver( {nocheck: true} ),
+					},
+				},
+			),
+		}
+	)
+	.then(
+		( result ) =>
+		{
+			console.log( result.css );
 		}
 	);
 ```
