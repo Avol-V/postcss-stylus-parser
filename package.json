@@ -1,0 +1,63 @@
+{
+  "name": "postcss-stylus-parser",
+  "version": "1.0.0",
+  "description": "PostCSS parser plugin to compile Stylus to CSS",
+  "author": "Andrey Avol Volynkin",
+  "license": "MIT",
+  "homepage": "https://github.com/Avol-V/postcss-stylus-parser#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avol-V/postcss-stylus-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Avol-V/postcss-stylus-parser/issues"
+  },
+  "keywords": [
+    "postcss",
+    "stylus",
+    "postcss-plugin",
+    "postcss-syntax",
+    "postcss-parser",
+    "css",
+    "parser",
+    "styl"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "types"
+  ],
+  "scripts": {
+    "test": "npm run lint && npm run test:main",
+    "test:main": "cross-env TS_NODE_PROJECT=test/tsconfig.json TS_NODE_FILES=true mocha --require ts-node/register \"test/**/*.ts\" ",
+    "lint:scripts-project": "tslint -c tslint-project.json -p tsconfig.json",
+    "lint:scripts-other": "tslint \"{*.js,src/*.d.ts,test/*.ts}\"",
+    "lint": "npm run lint:scripts-project && npm run lint:scripts-other",
+    "clean": "rimraf lib",
+    "build": "tsc",
+    "prepublishOnly": "npm run test",
+    "prepare": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "postcss": "^7.0.5",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.6",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.11.7",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-avol": "^2.3.0",
+    "typescript": "^3.1.3"
+  }
+}

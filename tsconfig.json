@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"target": "es2017",
+		"lib": ["es2017"],
+		"module": "commonjs",
+		
+		"strict": true,
+		
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"forceConsistentCasingInFileNames": true,
+		
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		
+		"noEmitOnError": true,
+		"newLine": "LF",
+		"removeComments": false,
+		"declaration": true,
+		"sourceMap": true,
+		"importHelpers": false,
+		
+		"outDir": "./lib",
+		"rootDir": "./src/",
+		"baseUrl": "./src/"
+	},
+	"typeAcquisition": {
+		"include": [
+			"node"
+		]
+	},
+	"include": [
+		"./src/**/*.ts",
+		"./types/**/*.d.ts"
+	]
+}

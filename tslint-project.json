@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"tslint-config-avol",
+		"tslint-config-avol/project"
+	]
+}
